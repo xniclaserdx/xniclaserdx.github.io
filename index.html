@@ -18,10 +18,41 @@
             color: #fff;
             padding: 20px;
             text-align: center;
+            position: relative;
         }
         h1 {
             margin: 0;
             font-size: 32px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .slider-button {
+            background-color: #ddd;
+            border: none;
+            border-radius: 25px;
+            width: 60px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+        }
+        .slider-button::before {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            transition: 0.3s;
+            left: 2px;
+            top: 2px;
+        }
+        .slider-button.dark-mode::before {
+            left: 32px;
         }
         section {
             margin: 20px;
@@ -88,7 +119,9 @@
 <body>
     <header>
         <h1>BCSM Materialsammlung</h1>
-        <button id="toggle-dark-mode">Toggle Dark Mode</button>
+        <div class="button-container">
+            <button id="toggle-dark-mode" class="slider-button"></button>
+        </div>
     </header>
     <section>
         <h2>Über diese Seite</h2>
@@ -112,8 +145,7 @@
         <h2>Für Dozenten</h2>
         <p>Es kann passieren, dass Materialien, die auf dieser Seite veröffentlicht werden, urheberrechtlich geschützt sind, wenn diese weitergeleitet werden und nicht ausreichend gekennzeichnet sind. Wenn Sie Dozent sind und feststellen, dass Ihre Materialien unerlaubt auf dieser Seite veröffentlicht wurden, können Sie uns gerne kontaktieren.</p>
         <p><b>Wir werden sie dann umgehend entfernen.</b></p>
-        <p>Wenn Sie selbst Materialien haben, die
-            gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
+        <p>Wenn Sie selbst Materialien haben, die gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
         <h3>Haftungsausschluss</h3>
         <p>Wir übernehmen natürlich keine Haftung für die Richtigkeit der Materialien, die auf dieser Seite veröffentlicht werden. Es kann sein, dass die Materialien veraltet sind oder Fehler enthalten. Außerdem können sich die Prüfungen und Dozenten von Jahr zu Jahr ändern, sodass die Materialien nicht mehr aktuell sind.</p>
     </section>
@@ -204,6 +236,8 @@
             <p>Materialien:
                 <ul></ul>
             </p>
+
+
         </article>
     </section>
     <section id="lecture4">
@@ -285,6 +319,7 @@
         const toggleButton = document.getElementById('toggle-dark-mode');
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
+            toggleButton.classList.toggle('dark-mode');
         });
     </script>
 </body>
