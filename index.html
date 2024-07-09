@@ -89,9 +89,6 @@
     <header>
         <h1>BCSM Materialsammlung</h1>
         <button id="toggle-dark-mode">Toggle Dark Mode</button>
-<body>
-    <header>
-        <h1>BCSM Materialsammlung</h1>
     </header>
     <section>
         <h2>Über diese Seite</h2>
@@ -107,7 +104,7 @@
         <h2>Warum das ganze?</h2>
         <p>Die Bedeutung von Übungsmaterialien für die Prüfungsvorbereitung ist unumstritten. Im Studiengang BCSM fehlt jedoch bisher eine zentrale Anlaufstelle für diese Ressourcen. Dies liegt zum Teil daran, dass der Studiengang relativ neu ist und somit nur begrenzt auf solche Materialien zurückgegriffen werden kann.</p>
         <p>Der Austausch von Übungsmaterialien ist kaum zu kontrollieren. Dies führt zu einem unfairen Vorteil für Studierende, die durch Kontakte Zugang zu solchen Ressourcen haben.</p>
-        <p>Auf dieser Seite werden ausschließlich selbst erstellte Mitschriften aus Vorlesungen, Übungen und Probeklausuren bzw. Gedankenprotokolle gehostet. </p>
+        <p>Auf dieser Seite werden ausschließlich selbst erstellte Mitschriften aus Vorlesungen, Übungen und Probeklausuren bzw. Gedankenprotokolle gehostet.</p>
         <h2>Mitmachen</h2>
         <p>Wenn Sie Materialien haben, die Sie teilen möchten, können Sie sie gerne an uns senden. Wir werden sie überprüfen und, wenn sie den Richtlinien entsprechen, auf dieser Seite veröffentlichen.</p>
         <p>Hier ist der Link zur <a href="mailto:bcsm-materialsammlung@tech.com">E-Mail</a>.</p>
@@ -115,20 +112,10 @@
         <h2>Für Dozenten</h2>
         <p>Es kann passieren, dass Materialien, die auf dieser Seite veröffentlicht werden, urheberrechtlich geschützt sind, wenn diese weitergeleitet werden und nicht ausreichend gekennzeichnet sind. Wenn Sie Dozent sind und feststellen, dass Ihre Materialien unerlaubt auf dieser Seite veröffentlicht wurden, können Sie uns gerne kontaktieren.</p>
         <p><b>Wir werden sie dann umgehend entfernen.</b></p>
-        <p>Wenn Sie selbst Materialien haben, die Sie gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
+        <p>Wenn Sie selbst Materialien haben, die
+            gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
         <h3>Haftungsausschluss</h3>
         <p>Wir übernehmen natürlich keine Haftung für die Richtigkeit der Materialien, die auf dieser Seite veröffentlicht werden. Es kann sein, dass die Materialien veraltet sind oder Fehler enthalten. Außerdem können sich die Prüfungen und Dozenten von Jahr zu Jahr ändern, sodass die Materialien nicht mehr aktuell sind.</p>
-    </section>
-    <section>
-        <h2>Semester</h2>
-        <ul>
-            <li><a href="#lecture1">1. Semester</a></li>
-            <li><a href="#lecture2">2. Semester</a></li>
-            <li><a href="#lecture3">3. Semester</a></li>
-            <li><a href="#lecture4">4. Semester</a></li>
-            <li><a href="#lecture5">5. Semester</a></li>
-            <li><a href="#lecture6">6. Semester</a></li>
-        </ul>
     </section>
     <section id="lecture1">
         <h2>1. Semester</h2>
@@ -240,8 +227,6 @@
         <article>
             <h3>BCSM-403</h3>
             <p>Materialien:
-
-
                 <ul></ul>
             </p>
         </article>
@@ -296,5 +281,11 @@
     <footer>
         <p>&copy; 2024. All rights reserved.</p>
     </footer>
+    <script>
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
 </body>
 </html>
