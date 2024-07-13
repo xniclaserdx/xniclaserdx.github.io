@@ -5,7 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BCSM Materialsammlung</title>
     <style>
-        /* Your CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background-color: #007fff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 30px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 36px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .slider-button {
+            background-color: #ddd;
+            border: none;
+            border-radius: 25px;
+            width: 60px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.3s;
+        }
+        .slider-button::before {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            transition: transform 0.3s;
+            left: 2px;
+            top: 2px;
+        }
+        .slider-button.dark-mode::before {
+            transform: translateX(30px);
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 28px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        article {
+            margin-top: 20px;
+            padding: 10px 0;
+        }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        .dark-mode header {
+            background-color: #005bb5;
+        }
+        .dark-mode footer {
+            background-color: #005bb5;
+        }
+        .dark-mode section {
+            background-color: #444;
+            color: #f5f5f5;
+        }
+        .dark-mode a {
+            color: #66b2ff;
+        }
+        /* Improved Slider Button */
+        .slider-button:focus::before {
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Example focus style */
+        }
+        .slider-button:hover {
+            background-color: #ccc; /* Example hover style */
+        }
     </style>
 </head>
 <body>
@@ -22,7 +141,19 @@
         <ul id="semester-list">
             <!-- Semester links will be populated dynamically -->
         </ul>
-        <!-- Other content -->
+        <h2>Warum das ganze?</h2>
+        <p>Die Bedeutung von Übungsmaterialien für die Prüfungsvorbereitung ist unumstritten. Im Studiengang BCSM fehlt jedoch bisher eine zentrale Anlaufstelle für diese Ressourcen. Dies liegt zum Teil daran, dass der Studiengang relativ neu ist und somit nur begrenzt auf solche Materialien zurückgegriffen werden kann.</p>
+        <p>Der Austausch von Übungsmaterialien ist kaum zu kontrollieren. Dies führt zu einem unfairen Vorteil für Studierende, die durch Kontakte Zugang zu solchen Ressourcen haben.</p>
+        <p>Auf dieser Seite werden ausschließlich selbst erstellte Mitschriften aus Vorlesungen, Übungen und Probeklausuren bzw. Gedankenprotokolle gehostet.</p>
+        <h2>Mitmachen</h2>
+        <p>Wenn Sie Materialien haben, die Sie teilen möchten, können Sie sie gerne an uns senden. Wir werden sie überprüfen und, wenn sie den Richtlinien entsprechen, auf dieser Seite veröffentlichen.</p>
+        <p>Hier ist der Link zur <a href="mailto:bcsm-materialsammlung@tech.com">E-Mail</a>.</p>
+        <h2>Für Dozenten</h2>
+        <p>Es kann passieren, dass Materialien, die auf dieser Seite veröffentlicht werden, urheberrechtlich geschützt sind, wenn diese weitergeleitet werden und nicht ausreichend gekennzeichnet sind. Wenn Sie Dozent sind und feststellen, dass Ihre Materialien unerlaubt auf dieser Seite veröffentlicht wurden, können Sie uns gerne kontaktieren.</p>
+        <p><b>Wir werden sie dann umgehend entfernen.</b></p>
+        <p>Wenn Sie selbst Materialien haben, die gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
+        <h3>Haftungsausschluss</h3>
+        <p>Wir übernehmen natürlich keine Haftung für die Richtigkeit der Materialien, die auf dieser Seite veröffentlicht werden. Es kann sein, dass die Materialien veraltet sind oder Fehler enthalten. Außerdem können sich die Prüfungen und Dozenten von Jahr zu Jahr ändern, sodass die Materialien nicht mehr aktuell sind.</p>
     </section>
 
     <!-- Template for course listings -->
@@ -53,7 +184,28 @@
                 { code: 'BCSM-205', materials: [] },
                 { code: 'BCSM-206', materials: [] }
             ],
-            // Add more semesters as needed
+            'lecture3': [
+                { code: 'BCSM-301', materials: [] },
+                { code: 'BCSM-302', materials: [] },
+                { code: 'BCSM-303', materials: [] },
+                { code: 'BCSM-304', materials: [] },
+                { code: 'BCSM-305', materials: [] }
+            ],
+            'lecture4': [
+                { code: 'BCSM-401', materials: [] },
+                { code: 'BCSM-402', materials: [] },
+                { code: 'BCSM-403', materials: [] },
+                { code: 'BCSM-404', materials: [] },
+                { code: 'BCSM-405', materials: [] }
+            ],
+            
+            'lecture5': [
+                { code: 'BCSM-501', materials: [] },
+                { code: 'BCSM-502', materials: [] },
+                { code: 'BCSM-503', materials: [] },
+                { code: 'BCSM-504', materials: [] },
+                { code: 'BCSM-505', materials: [] }
+            ],
         };
 
         // Function to populate course listings
@@ -66,23 +218,23 @@
                 clone.querySelector('.course-code').textContent = course.code;
 
                 const ul = clone.querySelector('ul');
-                course.materials.forEach(material => {
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = material.link; // Replace with actual link if needed
-                    a.textContent = material.name; // Replace with actual material name
-                    li.appendChild(a);
-                    ul.appendChild(li);
-                });
+                // Example materials - replace with actual data if available
+                ul.innerHTML = '<li><a href="#">Example Material</a></li>';
 
                 semesterSection.appendChild(clone);
             });
         }
 
-        // Example: Populate courses for each semester
+        // Populate courses for each semester
         populateCourses('lecture1');
         populateCourses('lecture2');
         // Add more populateCourses calls for other semesters as needed
+
+        // Function to toggle dark mode
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
     </script>
 
     <footer>
@@ -90,4 +242,3 @@
     </footer>
 </body>
 </html>
-
