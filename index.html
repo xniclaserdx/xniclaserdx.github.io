@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BCSM Materialsammlung</title>
+    <title>Course Summary</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,17 +19,21 @@
             padding: 20px;
             text-align: center;
             position: relative;
-            padding-bottom: 30px;
         }
         h1 {
             margin: 0;
-            font-size: 36px;
+            font-size: 32px;
         }
         .button-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 20px;
+        }
+        .slider-container {
+            position: absolute;
+            right: 20px;
+            top: 20px;
         }
         .slider-button {
             background-color: #ddd;
@@ -40,7 +44,6 @@
             position: relative;
             cursor: pointer;
             outline: none;
-            transition: background-color 0.3s;
         }
         .slider-button::before {
             content: "";
@@ -49,12 +52,12 @@
             height: 26px;
             border-radius: 50%;
             background-color: white;
-            transition: transform 0.3s;
+            transition: 0.3s;
             left: 2px;
             top: 2px;
         }
         .slider-button.dark-mode::before {
-            transform: translateX(30px);
+            left: 32px;
         }
         section {
             margin: 20px;
@@ -65,10 +68,7 @@
         }
         h2 {
             margin-top: 0;
-            font-size: 28px;
-        }
-        h3 {
-            font-size: 20px;
+            font-size: 24px;
         }
         ul {
             list-style-type: none;
@@ -79,13 +79,15 @@
         }
         article {
             margin-top: 20px;
-            padding: 10px 0;
+        }
+        h3 {
+            font-size: 20px;
         }
         footer {
             background-color: #007bff;
             color: #fff;
             text-align: center;
-            padding: 20px 0;
+            padding: 10px 0;
             position: fixed;
             bottom: 0;
             width: 100%;
@@ -96,7 +98,6 @@
         a {
             color: #007bff;
             text-decoration: none;
-            transition: color 0.3s;
         }
         a:hover {
             text-decoration: underline;
@@ -106,10 +107,10 @@
             color: #f5f5f5;
         }
         .dark-mode header {
-            background-color: #005bb5;
+            background-color: #003366; /* Darker blue for night mode header */
         }
         .dark-mode footer {
-            background-color: #005bb5;
+            background-color: #003366; /* Darker blue for night mode footer */
         }
         .dark-mode section {
             background-color: #444;
@@ -118,29 +119,20 @@
         .dark-mode a {
             color: #66b2ff;
         }
-        /* Improved Slider Button */
-        .slider-button:focus::before {
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Example focus style */
-        }
-        .slider-button:hover {
-            background-color: #ccc; /* Example hover style */
-        }
     </style>
 </head>
 <body>
     <header>
         <h1>BCSM Materialsammlung</h1>
-        <div class="button-container">
-            <button id="toggle-dark-mode" class="slider-button" onclick="toggleDarkMode()"></button>
+        <div class="slider-container">
+            <label for="toggle-dark-mode">Night Mode</label>
+            <button id="toggle-dark-mode" class="slider-button"></button>
         </div>
     </header>
-
     <section>
         <h2>Über diese Seite</h2>
         <p>Willkommen auf der BCSM Materialsammlung! Hier gibt es Materialien, die bei der Vorbereitung auf Prüfungen und Klausuren helfen können.</p>
-        <ul id="semester-list">
-            <!-- Semester links will be populated dynamically -->
-        </ul>
+        <ul id="semester-links"></ul>
         <h2>Warum das ganze?</h2>
         <p>Die Bedeutung von Übungsmaterialien für die Prüfungsvorbereitung ist unumstritten. Im Studiengang BCSM fehlt jedoch bisher eine zentrale Anlaufstelle für diese Ressourcen. Dies liegt zum Teil daran, dass der Studiengang relativ neu ist und somit nur begrenzt auf solche Materialien zurückgegriffen werden kann.</p>
         <p>Der Austausch von Übungsmaterialien ist kaum zu kontrollieren. Dies führt zu einem unfairen Vorteil für Studierende, die durch Kontakte Zugang zu solchen Ressourcen haben.</p>
@@ -156,89 +148,54 @@
         <p>Wir übernehmen natürlich keine Haftung für die Richtigkeit der Materialien, die auf dieser Seite veröffentlicht werden. Es kann sein, dass die Materialien veraltet sind oder Fehler enthalten. Außerdem können sich die Prüfungen und Dozenten von Jahr zu Jahr ändern, sodass die Materialien nicht mehr aktuell sind.</p>
     </section>
 
-    <!-- Template for course listings -->
-    <template id="course-template">
-        <article>
-            <h3 class="course-code"></h3>
-            <p class="materials-list">
-                Materialien:
-                <ul></ul>
-            </p>
-        </article>
-    </template>
-
-    <!-- JavaScript to populate course listings -->
-    <script>
-        const coursesBySemester = {
-            'lecture1': [
-                { code: 'BCSM-101', materials: [] },
-                { code: 'BCSM-102', materials: [] },
-                { code: 'BCSM-103', materials: [] },
-                { code: 'BCSM-104', materials: [] },
-                { code: 'BCSM-105', materials: [] }
-            ],
-            'lecture2': [
-                { code: 'BCSM-201', materials: [] },
-                { code: 'BCSM-202', materials: [] },
-                { code: 'BCSM-203', materials: [] },
-                { code: 'BCSM-205', materials: [] },
-                { code: 'BCSM-206', materials: [] }
-            ],
-            'lecture3': [
-                { code: 'BCSM-301', materials: [] },
-                { code: 'BCSM-302', materials: [] },
-                { code: 'BCSM-303', materials: [] },
-                { code: 'BCSM-304', materials: [] },
-                { code: 'BCSM-305', materials: [] }
-            ],
-            'lecture4': [
-                { code: 'BCSM-401', materials: [] },
-                { code: 'BCSM-402', materials: [] },
-                { code: 'BCSM-403', materials: [] },
-                { code: 'BCSM-404', materials: [] },
-                { code: 'BCSM-405', materials: [] }
-            ],
-            
-            'lecture5': [
-                { code: 'BCSM-501', materials: [] },
-                { code: 'BCSM-502', materials: [] },
-                { code: 'BCSM-503', materials: [] },
-                { code: 'BCSM-504', materials: [] },
-                { code: 'BCSM-505', materials: [] }
-            ],
-        };
-
-        // Function to populate course listings
-        function populateCourses(semesterId) {
-            const semesterSection = document.getElementById(semesterId);
-            const template = document.getElementById('course-template');
-
-            coursesBySemester[semesterId].forEach(course => {
-                const clone = document.importNode(template.content, true);
-                clone.querySelector('.course-code').textContent = course.code;
-
-                const ul = clone.querySelector('ul');
-                // Example materials - replace with actual data if available
-                ul.innerHTML = '<li><a href="#">Example Material</a></li>';
-
-                semesterSection.appendChild(clone);
-            });
-        }
-
-        // Populate courses for each semester
-        populateCourses('lecture1');
-        populateCourses('lecture2');
-        // Add more populateCourses calls for other semesters as needed
-
-        // Function to toggle dark mode
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-        }
-    </script>
-
     <footer>
         <p>&copy; 2024. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Function to toggle dark mode
+        const toggleButton = document.getElementById('toggle-dark-mode');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+        // Check if user prefers dark mode
+        if (localStorage.getItem('dark-mode') === 'true' || (prefersDarkScheme.matches && !localStorage.getItem('dark-mode'))) {
+            document.body.classList.add('dark-mode');
+            toggleButton.classList.add('dark-mode');
+        }
+
+        // Toggle dark mode
+        toggleButton.addEventListener('click', () => {
+            const isDarkMode = document.body.classList.toggle('dark-mode');
+            toggleButton.classList.toggle('dark-mode');
+            localStorage.setItem('dark-mode', isDarkMode ? 'true' : 'false');
+        });
+
+        // Function to generate semester links and sections dynamically
+        function generateSemesterSections(numSemesters) {
+            const semestersContainer = document.getElementById('semester-links');
+            const contentContainer = document.querySelector('body > section');
+
+            for (let i = 1; i <= numSemesters; i++) {
+                // Create semester link
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#lecture${i}`;
+                a.textContent = `${i}. Semester`;
+                li.appendChild(a);
+                semestersContainer.appendChild(li);
+
+                // Create section for the semester
+                const section = document.createElement('section');
+                section.id = `lecture${i}`;
+                const h2 = document.createElement('h2');
+                h2.textContent = `${i}. Semester`;
+                section.appendChild(h2);
+                contentContainer.appendChild(section);
+            }
+        }
+
+        // Generate semester links and sections for 6 semesters
+        generateSemesterSections(6);
+    </script>
 </body>
 </html>
