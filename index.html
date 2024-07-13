@@ -39,6 +39,7 @@
             position: relative;
             cursor: pointer;
             outline: none;
+            transition: background-color 0.3s;
         }
         .slider-button::before {
             content: "";
@@ -47,12 +48,12 @@
             height: 26px;
             border-radius: 50%;
             background-color: white;
-            transition: 0.3s;
+            transition: transform 0.3s;
             left: 2px;
             top: 2px;
         }
         .slider-button.dark-mode::before {
-            left: 32px;
+            transform: translateX(30px);
         }
         section {
             margin: 20px;
@@ -93,6 +94,7 @@
         a {
             color: #007bff;
             text-decoration: none;
+            transition: color 0.3s;
         }
         a:hover {
             text-decoration: underline;
@@ -113,6 +115,13 @@
         }
         .dark-mode a {
             color: #66b2ff;
+        }
+        /* Improved Slider Button */
+        .slider-button:focus::before {
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Example focus style */
+        }
+        .slider-button:hover {
+            background-color: #ccc; /* Example hover style */
         }
     </style>
 </head>
@@ -315,11 +324,10 @@
         <p>&copy; 2024. All rights reserved.</p>
     </footer>
     <script>
-        const toggleButton = document.getElementById('toggle-dark-mode');
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            toggleButton.classList.toggle('dark-mode');
-        });
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+        }
     </script>
 </body>
 </html>
