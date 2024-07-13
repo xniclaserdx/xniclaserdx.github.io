@@ -3,331 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Summary</title>
+    <title>BCSM Materialsammlung</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        header {
-            background-color: #007fff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        h1 {
-            margin: 0;
-            font-size: 32px;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
-        .slider-button {
-            background-color: #ddd;
-            border: none;
-            border-radius: 25px;
-            width: 60px;
-            height: 30px;
-            position: relative;
-            cursor: pointer;
-            outline: none;
-            transition: background-color 0.3s;
-        }
-        .slider-button::before {
-            content: "";
-            position: absolute;
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            background-color: white;
-            transition: transform 0.3s;
-            left: 2px;
-            top: 2px;
-        }
-        .slider-button.dark-mode::before {
-            transform: translateX(30px);
-        }
-        section {
-            margin: 20px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            margin-top: 0;
-            font-size: 24px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin-bottom: 10px;
-        }
-        article {
-            margin-top: 20px;
-        }
-        h3 {
-            font-size: 20px;
-        }
-        footer {
-            background-color: #007bff;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        footer p {
-            margin: 0;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .dark-mode {
-            background-color: #333;
-            color: #f5f5f5;
-        }
-        .dark-mode header {
-            background-color: #005bb5;
-        }
-        .dark-mode footer {
-            background-color: #005bb5;
-        }
-        .dark-mode section {
-            background-color: #444;
-            color: #f5f5f5;
-        }
-        .dark-mode a {
-            color: #66b2ff;
-        }
-        /* Improved Slider Button */
-        .slider-button:focus::before {
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3); /* Example focus style */
-        }
-        .slider-button:hover {
-            background-color: #ccc; /* Example hover style */
-        }
+        /* Your CSS styles here */
     </style>
 </head>
 <body>
     <header>
         <h1>BCSM Materialsammlung</h1>
         <div class="button-container">
-            <button id="toggle-dark-mode" class="slider-button"></button>
+            <button id="toggle-dark-mode" class="slider-button" onclick="toggleDarkMode()"></button>
         </div>
     </header>
+
     <section>
         <h2>Über diese Seite</h2>
         <p>Willkommen auf der BCSM Materialsammlung! Hier gibt es Materialien, die bei der Vorbereitung auf Prüfungen und Klausuren helfen können.</p>
-        <ul>
-            <li><a href="#lecture1">1. Semester</a></li>
-            <li><a href="#lecture2">2. Semester</a></li>
-            <li><a href="#lecture3">3. Semester</a></li>
-            <li><a href="#lecture4">4. Semester</a></li>
-            <li><a href="#lecture5">5. Semester</a></li>
-            <li><a href="#lecture6">6. Semester</a></li>
+        <ul id="semester-list">
+            <!-- Semester links will be populated dynamically -->
         </ul>
-        <h2>Warum das ganze?</h2>
-        <p>Die Bedeutung von Übungsmaterialien für die Prüfungsvorbereitung ist unumstritten. Im Studiengang BCSM fehlt jedoch bisher eine zentrale Anlaufstelle für diese Ressourcen. Dies liegt zum Teil daran, dass der Studiengang relativ neu ist und somit nur begrenzt auf solche Materialien zurückgegriffen werden kann.</p>
-        <p>Der Austausch von Übungsmaterialien ist kaum zu kontrollieren. Dies führt zu einem unfairen Vorteil für Studierende, die durch Kontakte Zugang zu solchen Ressourcen haben.</p>
-        <p>Auf dieser Seite werden ausschließlich selbst erstellte Mitschriften aus Vorlesungen, Übungen und Probeklausuren bzw. Gedankenprotokolle gehostet.</p>
-        <h2>Mitmachen</h2>
-        <p>Wenn Sie Materialien haben, die Sie teilen möchten, können Sie sie gerne an uns senden. Wir werden sie überprüfen und, wenn sie den Richtlinien entsprechen, auf dieser Seite veröffentlichen.</p>
-        <p>Hier ist der Link zur <a href="mailto:bcsm-materialsammlung@tech.com">E-Mail</a>.</p>
-        <h2>Für Dozenten</h2>
-        <p>Es kann passieren, dass Materialien, die auf dieser Seite veröffentlicht werden, urheberrechtlich geschützt sind, wenn diese weitergeleitet werden und nicht ausreichend gekennzeichnet sind. Wenn Sie Dozent sind und feststellen, dass Ihre Materialien unerlaubt auf dieser Seite veröffentlicht wurden, können Sie uns gerne kontaktieren.</p>
-        <p><b>Wir werden sie dann umgehend entfernen.</b></p>
-        <p>Wenn Sie selbst Materialien haben, die gerne teilen möchten, freuen wir uns über eine Nachricht.</p>
-        <h3>Haftungsausschluss</h3>
-        <p>Wir übernehmen natürlich keine Haftung für die Richtigkeit der Materialien, die auf dieser Seite veröffentlicht werden. Es kann sein, dass die Materialien veraltet sind oder Fehler enthalten. Außerdem können sich die Prüfungen und Dozenten von Jahr zu Jahr ändern, sodass die Materialien nicht mehr aktuell sind.</p>
+        <!-- Other content -->
     </section>
-    <section id="lecture1">
-        <h2>1. Semester</h2>
-        <article>
-            <h3>BCSM-101</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-102</h3>
-        </article>
-        <article>
-            <h3>BCSM-103</h3>
-        </article>
-        <article>
-            <h3>BCSM-104</h3>
-        </article>
-        <article>
-            <h3>BCSM-105</h3>
-        </article>
-    </section>
-    <section id="lecture2">
-        <h2>2. Semester</h2>
-        <article>
-            <h3>BCSM-201</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-202</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-203</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-205</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-206</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-    </section>
-    <section id="lecture3">
-        <h2>3. Semester</h2>
-        <article>
-            <h3>BCSM-301</h3>
-            <p>Materialien:</p>
-        </article>
-        <article>
-            <h3>BCSM-302</h3>
-            <p>Materialien:</p>
-        </article>
-        <article>
-            <h3>BCSM-303</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-304</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-305</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-306</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
 
+    <!-- Template for course listings -->
+    <template id="course-template">
+        <article>
+            <h3 class="course-code"></h3>
+            <p class="materials-list">
+                Materialien:
+                <ul></ul>
+            </p>
+        </article>
+    </template>
 
-        </article>
-    </section>
-    <section id="lecture4">
-        <h2>4. Semester</h2>
-        <article>
-            <h3>BCSM-401</h3>
-            <p>Materialien:
-                <ul>
-                    <li><a href="Schwachstellen_Zusammenfassung.html">Zusammenfassung der Schwachstellen - SS2024</a></li>
-                </ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-402</h3>
-            <p>Materialien:
-                <ul>
-                    <li><a href="BCM_Zusammenfassung.html">BCM - SS2024</a></li>
-                </ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-403</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-404</h3>
-            <p>Materialien:
-                <ul>
-                    <li><a href="Anwendungssysteme_Zusammenfassung.html">Anwendungssysteme - SS2024</a></li>
-                </ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-405</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-    </section>
-    <section id="lecture5">
-        <h2>5. Semester</h2>
-        <article>
-            <h3>BCSM-501</h3>
-            <p>Probeklausuren:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-502</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-503</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-504</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-        <article>
-            <h3>BCSM-505</h3>
-            <p>Materialien:
-                <ul></ul>
-            </p>
-        </article>
-    </section>
+    <!-- JavaScript to populate course listings -->
+    <script>
+        const coursesBySemester = {
+            'lecture1': [
+                { code: 'BCSM-101', materials: [] },
+                { code: 'BCSM-102', materials: [] },
+                { code: 'BCSM-103', materials: [] },
+                { code: 'BCSM-104', materials: [] },
+                { code: 'BCSM-105', materials: [] }
+            ],
+            'lecture2': [
+                { code: 'BCSM-201', materials: [] },
+                { code: 'BCSM-202', materials: [] },
+                { code: 'BCSM-203', materials: [] },
+                { code: 'BCSM-205', materials: [] },
+                { code: 'BCSM-206', materials: [] }
+            ],
+            // Add more semesters as needed
+        };
+
+        // Function to populate course listings
+        function populateCourses(semesterId) {
+            const semesterSection = document.getElementById(semesterId);
+            const template = document.getElementById('course-template');
+
+            coursesBySemester[semesterId].forEach(course => {
+                const clone = document.importNode(template.content, true);
+                clone.querySelector('.course-code').textContent = course.code;
+
+                const ul = clone.querySelector('ul');
+                course.materials.forEach(material => {
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = material.link; // Replace with actual link if needed
+                    a.textContent = material.name; // Replace with actual material name
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                });
+
+                semesterSection.appendChild(clone);
+            });
+        }
+
+        // Example: Populate courses for each semester
+        populateCourses('lecture1');
+        populateCourses('lecture2');
+        // Add more populateCourses calls for other semesters as needed
+    </script>
+
     <footer>
         <p>&copy; 2024. All rights reserved.</p>
     </footer>
-    <script>
-        function toggleDarkMode() {
-            const body = document.body;
-            body.classList.toggle('dark-mode');
-        }
-    </script>
 </body>
 </html>
+
