@@ -125,7 +125,7 @@
     <header>
         <h1>BCSM Materialsammlung</h1>
         <div class="slider-container">
-            <label for="toggle-dark-mode">Night Mode</label>
+            <label for="toggle-dark-mode">Toggle Night Mode</label>
             <button id="toggle-dark-mode" class="slider-button"></button>
         </div>
     </header>
@@ -179,23 +179,60 @@
                 // Create semester link
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = `#lecture${i}`;
+                a.href = `#semester${i}`;
                 a.textContent = `${i}. Semester`;
                 li.appendChild(a);
                 semestersContainer.appendChild(li);
 
                 // Create section for the semester
                 const section = document.createElement('section');
-                section.id = `lecture${i}`;
+                section.id = `semester${i}`;
                 const h2 = document.createElement('h2');
                 h2.textContent = `${i}. Semester`;
                 section.appendChild(h2);
+
+                // Create a subsection for lectures
+                const lectureSubsection = document.createElement('article');
+                const h3 = document.createElement('h3');
+                h3.textContent = 'Lectures';
+                lectureSubsection.appendChild(h3);
+                section.appendChild(lectureSubsection);
+
+                // Create a list to hold lecture links
+                const ul = document.createElement('ul');
+                lectureSubsection.appendChild(ul);
+                
                 contentContainer.appendChild(section);
+            }
+        }
+
+        // Function to add a file link to a specific semester
+        function addFileToSemester(semester, fileName) {
+            const semesterSection = document.querySelector(`#semester${semester} ul`);
+            if (semesterSection) {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = `#`;
+                a.textContent = fileName;
+                li.appendChild(a);
+                semesterSection.appendChild(li);
+            } else {
+                console.error(`Semester ${semester} does not exist.`);
             }
         }
 
         // Generate semester links and sections for 6 semesters
         generateSemesterSections(6);
+
+        // Example usage of adding file links to semesters
+        addFileToSemester(1, 'Introduction to Programming');
+        addFileToSemester(2, 'Data Structures and Algorithms');
+        addFileToSemester(3, 'Database Systems');
+        addFileToSemester(4, 'Operating Systems');
+        addFileToSemester(5, 'Computer Networks');
+        addFileToSemester(6, 'Artificial Intelligence');
+
+
     </script>
 </body>
 </html>
