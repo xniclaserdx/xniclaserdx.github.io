@@ -210,13 +210,14 @@
         }
 
         // Function to add a file link to a specific semester
-        function addFileToSemester(semester, fileName) {
+        function addFileToSemester(semester, fileName, filePath) {
             const semesterSection = document.querySelector(`#semester${semester} ul`);
             if (semesterSection) {
                 const li = document.createElement('li');
                 const a = document.createElement('a');
-                a.href = `#`;
+                a.href = filePath; // Correct file path to the PDF
                 a.textContent = fileName;
+                a.target = "_blank"; // Opens the PDF in a new tab
                 li.appendChild(a);
                 semesterSection.appendChild(li);
             } else {
@@ -230,7 +231,7 @@
         // Example usage of adding file links to semesters
         // addFileToSemester(1, 'Introduction to Programming');
         // addFileToSemester(2, 'Data Structures and Algorithms');
-        addFileToSemester(2, 'BCSM-201 Probeklausuren', 'BCSM-201-PKFRAGEN.pdf');
+        addFileToSemester(2, 'BCSM-201 Probeklausurfragen', 'BCSM-201-PKFRAGEN.pdf');
 
         
     </script>
