@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nicks Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            background-color: #007fff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .slider-container {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            display: flex;
+            align-items: center;
+        }
+        .slider-button {
+            background-color: #ddd;
+            border: none;
+            border-radius: 25px;
+            width: 60px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            outline: none;
+            margin-left: 10px;
+        }
+        .slider-button::before {
+            content: "";
+            position: absolute;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background-color: white;
+            transition: 0.3s;
+            left: 2px;
+            top: 2px;
+        }
+        .slider-button.dark-mode::before {
+            left: 32px;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        article {
+            margin-top: 20px;
+        }
+        h3 {
+            font-size: 20px;
+        }
+        footer {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer p {
+            margin: 0;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .dark-mode {
+            background-color: #333;
+            color: #f5f5f5;
+        }
+        .dark-mode header {
+            background-color: #003366; /* Darker blue for night mode header */
+        }
+        .dark-mode footer {
+            background-color: #003366; /* Darker blue for night mode footer */
+        }
+        .dark-mode section {
+            background-color: #444;
+            color: #f5f5f5;
+        }
+        .dark-mode a {
+            color: #66b2ff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Nicks Blog</h1>
+    <div class="slider-container">
+        <span>Light</span>
+        <button class="slider-button" onclick="toggleDarkMode()"></button>
+        <span>Dark</span>
+    </div>
+</header>
+
+<section>
+    <h2>Overview</h2>
+    <p>Welcome to this Blog. Here you can find all the information you need to know.</p>
+    <p>Click on the links below to get more information.</p>
+    <p>Have fun!</p>
+</section>
+
+<section>
+    <h2>Blogeinträge</h2>
+    <p> Hier findest du alle deutschen Blogeinträge.</p>
+    <p> Klicke auf den Link um mehr zu erfahren</p>
+    <p> Viel Spaß!</p>
+    <ul>
+        <li><a href="#blog\dslit+mcserver">Blogeintrag 1: DSLite und Minecraft-Server: So löst du die Herausforderung </a></li>
+    </ul>
+</section>
+
+<section>
+    <h2>Bachelor of Science CSM</h2>
+    <p> Hier findet man Lernmaterialien zum Studiengang BCSM</p>
+    <ul>
+        <li><a href="#materials">Lernmaterial BCSM</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>&copy; 2024. Alle Rechte vorbehalten.</p>
+</footer>
+
+<script>
+    function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const button = document.querySelector('.slider-button');
+        button.classList.toggle('dark-mode');
+    }
+</script>
+
+</body>
+</html>
